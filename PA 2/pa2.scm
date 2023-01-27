@@ -22,6 +22,7 @@
     )
 )
 
+; (Not for submission) Jim said no high-order functions
 (define sqr-list-1
     (lambda (lst)
         (map sqr lst)
