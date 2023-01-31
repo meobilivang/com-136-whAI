@@ -18,12 +18,13 @@
       (display count)
       (newline)
       
-      ; mark + color visited coord
-      (mark-visited grid x y)
-      (draw-visited x y)
-      
       (move-robot grid x y 0)
       (draw-moved-robot (robot-x) (robot-y))
+      
+      ; mark + color visited coord
+      (set-visited grid x y)
+      (draw-visited x y)
+      
       (if (or
             (and (= x (robot-x)) (= y (robot-y)))
             (equal? robot goal)

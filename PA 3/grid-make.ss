@@ -72,7 +72,7 @@
 
 ; refer to grid-make.ss
 ; set a node on grid to value 1 (visited)
-(define mark-visited 
+(define set-visited 
   (lambda (grid x y)
     (set-node! grid x y visited)
   )
