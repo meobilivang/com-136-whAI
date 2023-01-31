@@ -168,6 +168,29 @@
     )    
 )
 
+(define (flatten-1 lst)
+    (cond 
+        ((null? lst) lst)
+        
+        ; list detected -> recursively unpack that list -> eventually merge w main list
+        ((list? (car lst)) (merge-list (flatten-1 (car lst)) (flatten-1 (cdr lst))))
+        
+        (else 
+            (cons (car lst) (flatten-1 (cdr lst)) )
+        )
+    )
+)
+
+(define (merge-list lst1 lst2)
+    (cond
+        ((null? lst1) lst2)
+        ((null? lst2) lst1)
+        (else 
+            (cons (car lst1) (cons (car lst2) (merge-list (cdr lst1) (cdr lst2))))
+        )
+    )
+)
+
 ; Run 20 commands from Chapter 6 that you think would be particularly
 ; advantageous.  Make sure you experiment with vectors and their conversions
 ; to and from lists.
