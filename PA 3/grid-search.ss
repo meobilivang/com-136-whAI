@@ -52,18 +52,18 @@
           (move-robot grid x y (+ count 1)))))))
 
 (define move-any-dir
-  (lambda (grid x y)
-    (cond
-      ((and (> x 0) (< (get-node grid (- x 1) y) obstacle))
+(lambda (grid x y)
+   (cond
+      ((and (> x 0) (< (get-node grid (- x 1) y) obstacle) (not (= (get-node grid (- x 1) y) visited)))
          (set! robot (list (- x 1) y)))  
-      ((and (< x (- num-col-row 1)) (< (get-node grid (+ x 1) y) obstacle))
+      ((and (< x (- num-col-row 1)) (< (get-node grid (+ x 1) y) obstacle) (not (= (get-node grid (+ x 1) y) visited)))
          (set! robot (list (+ x 1) y)))
-      ((and (> y 0) (< (get-node grid x (- y 1)) obstacle))
+      ((and (> y 0) (< (get-node grid x (- y 1)) obstacle) (not (= (get-node grid x (- y 1) visited))))
          (set! robot (list x (- y 1))))
-      ((and (< y (- num-col-row 1)) (< (get-node grid x (+ y 1)) obstacle))
+      ((and (< y (- num-col-row 1)) (< (get-node grid x (+ y 1)) obstacle) (not (= (get-node grid x (+ y 1)) visited)))
          (set! robot (list x (+ y 1))))
       (else
-        (display "no move")))))
+      (display "no move")))))
 
 (define pause
   (lambda (count)
